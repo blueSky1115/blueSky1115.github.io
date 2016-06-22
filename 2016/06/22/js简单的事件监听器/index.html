@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2016/6 | 她的小猫咪</title>
+  <title>JS实现一个简单的事件监听器 | 她的小猫咪</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -221,46 +221,60 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/06/22/js简单的事件监听器/">JS实现一个简单的事件监听器</a></h4>
-                            
-                            <p><time datetime="2016-06-22T09:46:02.000Z"><a href="/2016/06/22/js简单的事件监听器/">2016-06-22</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/06/22/love/">试着学习markdown</a></h4>
-                            
-                            <p><time datetime="2016-06-22T09:24:33.000Z"><a href="/2016/06/22/love/">2016-06-22</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-06-22T09:46:02.000Z" itemprop="datePublished">
+          2016-06-22
+      </time>
+    
+</span>
+                <h1>JS实现一个简单的事件监听器</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h3 id="来由"><a href="#来由" class="headerlink" title="来由"></a>来由</h3><p>一天闲来无事看到一个面试题事题， 说用原生的js实现一个简单的事件监听器？一开始连思考都没有思考直接上谷歌了，找了很多，还是没有找到想要的。具体的面试题如下－&gt;</p>
+<h5 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h5><p>请用jS实现一个简单的事件监听器？</p>
+<h4 id="下面直接亮代码了"><a href="#下面直接亮代码了" class="headerlink" title="下面直接亮代码了"></a>下面直接亮代码了</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventDispatcher</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.events = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件监听</span></span><br><span class="line">EventDispatcher.prototype.addEventListener = <span class="function"><span class="keyword">function</span>(<span class="params">type, handler</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> handler != <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">this</span>.events[type] = handler;</span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发</span></span><br><span class="line">EventDispatcher.prototype.dispatchEvent = <span class="function"><span class="keyword">function</span>(<span class="params">type, body</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> e = &#123;&#125;;</span><br><span class="line">	e.body = body;</span><br><span class="line">	<span class="keyword">this</span>.events[type](e); <span class="comment">// 分发时候调用函数，并带上参数</span></span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> EventDispatcher();</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发出去</span></span><br><span class="line">d.dispatchEvent(<span class="string">'testEvent'</span>, <span class="string">'213123123'</span>);</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 监听接收到分发的对象</span></span><br><span class="line">d.addEventListener(<span class="string">'testEvent'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'callback fired-----'</span> + e.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>##有问题反馈<br>在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
+<ul>
+<li>邮件(hewenlin2016@icloud.com)</li>
+<li>QQ: 370215230</li>
+</ul>
+<p>##关于作者</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ihubo = &#123;</span><br><span class="line">  nickName  : <span class="string">"奈何"</span>,</span><br><span class="line">  site : <span class="string">"http://bluesky1115.github.io/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2016/06/22/love/">
+        试着学习markdown →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
-        </div>
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/06/22/js简单的事件监听器/" data-title="JS实现一个简单的事件监听器" data-url="http://bluesky1115.github.io/2016/06/22/js简单的事件监听器/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
