@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>JS实现一个简单的事件监听器 | 她的小猫咪</title>
+  <title>Archives: 2016/10 | 她的小猫咪</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -191,59 +191,69 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2016-06-22T09:46:02.000Z" itemprop="datePublished">
-          2016-06-22
-      </time>
-    
-</span>
-                <h1>JS实现一个简单的事件监听器</h1>
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p>来由???<br>一天闲来无事看到一个面试题事题，说用原生的js实现一个简单的事件监听器？一开始连思考都没有思考直接上谷歌了，找了很多，还是没有找到想要的。</p>
-<p>面试题是－－&gt;请用jS实现一个简单的事件监听器？<br><a id="more"></a></p>
-<p>下面直接亮代码了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventDispatcher</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.events = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件监听</span></span><br><span class="line">EventDispatcher.prototype.addEventListener = <span class="function"><span class="keyword">function</span>(<span class="params">type, handler</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> handler != <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">this</span>.events[type] = handler;</span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发</span></span><br><span class="line">EventDispatcher.prototype.dispatchEvent = <span class="function"><span class="keyword">function</span>(<span class="params">type, body</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> e = &#123;&#125;;</span><br><span class="line">	e.body = body;</span><br><span class="line">	<span class="keyword">this</span>.events[type](e); <span class="comment">// 分发时候调用函数，并带上参数</span></span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> EventDispatcher();</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发出去</span></span><br><span class="line">d.dispatchEvent(<span class="string">'testEvent'</span>, <span class="string">'213123123'</span>);</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 监听接收到分发的对象</span></span><br><span class="line">d.addEventListener(<span class="string">'testEvent'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'callback fired-----'</span> + e.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2016/06/23/JS实现获取本周、本月、本季度、半年的时间/" style="float: left;">
-        ← JS实现获取本周、本月、本季度、半年的时间
-    </a>
-    
-    
-    <a class="pull-right" href="/2016/06/22/love/">
-        试着学习markdown →
-    </a>
-    
-</nav>
+      <!-- ============================ Hero Image =========================== -->
 
-        <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2016/06/22/js简单的事件监听器/" data-title="JS实现一个简单的事件监听器" data-url="http://bluesky1115.github.io/2016/06/22/js简单的事件监听器/"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"duoshuo_name"};
-(function() {
-	var ds = document.createElement('script');
-	ds.type = 'text/javascript';ds.async = true;
-	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	ds.charset = 'UTF-8';
-	(document.getElementsByTagName('head')[0] 
-	 || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-</div>
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
 </section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
 
+<!-- ============================ END Hero Image =========================== -->
+
+
+
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2016/10/08/mogodb启动方法(window)/">mongodb启动方法(window)</a></h4>
+                            
+                            <p><time datetime="2016-10-08T06:51:20.000Z"><a href="/2016/10/08/mogodb启动方法(window)/">2016-10-08</a></time></p>
+                        </div>
+                    
+                </div>
+            </div>    
+        </div>
+    </div>
+</section> 
+
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
       
 <!-- ============================ Footer =========================== -->
 

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>JS实现一个简单的事件监听器 | 她的小猫咪</title>
+  <title>mongodb启动不了：child process failed, exited with error number 100 | 她的小猫咪</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -197,37 +197,53 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2016-06-22T09:46:02.000Z" itemprop="datePublished">
-          2016-06-22
+      <time datetime="2016-09-13T13:06:40.000Z" itemprop="datePublished">
+          2016-09-13
       </time>
     
 </span>
-                <h1>JS实现一个简单的事件监听器</h1>
+                <h1>mongodb启动不了：child process failed, exited with error number 100</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>来由???<br>一天闲来无事看到一个面试题事题，说用原生的js实现一个简单的事件监听器？一开始连思考都没有思考直接上谷歌了，找了很多，还是没有找到想要的。</p>
-<p>面试题是－－&gt;请用jS实现一个简单的事件监听器？<br><a id="more"></a></p>
-<p>下面直接亮代码了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventDispatcher</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.events = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件监听</span></span><br><span class="line">EventDispatcher.prototype.addEventListener = <span class="function"><span class="keyword">function</span>(<span class="params">type, handler</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> handler != <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">this</span>.events[type] = handler;</span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发</span></span><br><span class="line">EventDispatcher.prototype.dispatchEvent = <span class="function"><span class="keyword">function</span>(<span class="params">type, body</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> e = &#123;&#125;;</span><br><span class="line">	e.body = body;</span><br><span class="line">	<span class="keyword">this</span>.events[type](e); <span class="comment">// 分发时候调用函数，并带上参数</span></span><br><span class="line">&#125;;</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> EventDispatcher();</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 事件分发出去</span></span><br><span class="line">d.dispatchEvent(<span class="string">'testEvent'</span>, <span class="string">'213123123'</span>);</span><br><span class="line">			</span><br><span class="line"><span class="comment">// 监听接收到分发的对象</span></span><br><span class="line">d.addEventListener(<span class="string">'testEvent'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'callback fired-----'</span> + e.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      		<p>今天在启动mongodb的时候，发现起不来，报错：child process failed, exited with error number 100；发现—–&gt;<br><img src="http://img.blog.csdn.net/20160805133426206" alt="就是这货"></p>
+<a id="more"></a>
+<p>然后去官方文档一查看，嗯？？是的 ， 我之前关闭mongodb没有正确关闭所造成的。</p>
+<p><img src="http://img.blog.csdn.net/20160805133806629" alt="这里写图片描述"></p>
+<hr>
+<p>先用命令行  <code>ps -ef | grep mongod</code>  得到进程信息</p>
+<p><img src="http://img.blog.csdn.net/20160805133853466" alt="这里写图片描述"></p>
+<hr>
+<p>然后执行kill 命令把进程关掉</p>
+<p><img src="http://img.blog.csdn.net/20160805133941233" alt="这里写图片描述"></p>
+<hr>
+<p>再然后重新启动配置文件就可以啦</p>
+<p><img src="http://img.blog.csdn.net/20160805134031005" alt="这里写图片描述"></p>
+<hr>
+<p>ps:  别忘了先删除/var/lib/mongo下的mongod.lock</p>
+<hr>
+<p>ps2:</p>
+<p>先通过shell连上服务器：<br>mongo<br>use admin<br>db.shutdownServer()</p>
+<p>或者直接kill -15 <pid>,注意kill -9 可能会导致数据文件损坏</pid></p>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/06/23/JS实现获取本周、本月、本季度、半年的时间/" style="float: left;">
-        ← JS实现获取本周、本月、本季度、半年的时间
+    <a class="pull-left" href="/2016/09/19/移动端的一些常用css的设置 .(2)/" style="float: left;">
+        ← 移动端的一些常用css的设置
     </a>
     
     
-    <a class="pull-right" href="/2016/06/22/love/">
-        试着学习markdown →
+    <a class="pull-right" href="/2016/09/09/gulp入门到上树/">
+        gulp从入门到上树 →
     </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2016/06/22/js简单的事件监听器/" data-title="JS实现一个简单的事件监听器" data-url="http://bluesky1115.github.io/2016/06/22/js简单的事件监听器/"></div>
+<div class="ds-thread" data-thread-key="2016/09/13/mongodb启动不了：child process failed, exited with error number 100/" data-title="mongodb启动不了：child process failed, exited with error number 100" data-url="http://bluesky1115.github.io/2016/09/13/mongodb启动不了：child process failed, exited with error number 100/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {
